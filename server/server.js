@@ -44,6 +44,11 @@ app.get('/', (req, res) => {
     res.send('Server is running');
 });
 
+app.get('/users/search', (req, res) => {
+  const name = req.query.name;
+  res.send(`Hello, ${name}!`);
+})
+
 // サーバーを指定したポートで起動する
 // `app.listen` は、指定されたポートでサーバーを開始し、クライアントからのリクエストを待ち受ける
 app.listen(PORT, () => {
