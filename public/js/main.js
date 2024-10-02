@@ -1,5 +1,5 @@
 // public/main.js
-
+//コメント追加
 // フォームの送信イベントにリスナーを追加し、addUser 関数を実行する
 document.getElementById('userForm').addEventListener('submit', addUser);
 
