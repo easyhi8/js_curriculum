@@ -8,7 +8,7 @@ app.get('/users/search', (req, res) => {
 
 const db = require('./db');
 
-db.query("SELECT * FROM users WHERE name LIKE '%条件%' OR email LIKE '%条件%'", (err, results) => {
+db.query('SELECT * FROM users WHERE name LIKE "%条件%" OR email LIKE "%条件%"', (err, results) => {
     if (err) {
         console.error('Error fetching data:', err);
         return;
