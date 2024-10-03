@@ -3,6 +3,8 @@
 // フォームの送信イベントにリスナーを追加し、addUser 関数を実行する
 document.getElementById('userForm').addEventListener('submit', addUser);
 
+document.getElementById('searchInput').addEventListener('searchButton', ferchSearchUser);
+
 // ユーザーを追加するための関数
 function addUser(e) {
     // フォームのデフォルトの送信動作を防止する
@@ -63,6 +65,18 @@ function deleteUser(id) {
             getUsers();
         })
         .catch(error => console.error('Error:', error));  // エラーが発生した場合、エラーメッセージをコンソールに出力
+}
+
+async function fetchSearchUser() {
+  try {
+    const response = await fetch(`/users/search?query=${encodeURIComponent(query)}`);
+    const data = await response.json();
+    console.log("検索結果:", data);
+
+    document.getElementById("resultList").textContent = JSON.stringify(data);
+  } catch (error) {
+    console.error("エラーが発生しました:", error);
+  }
 }
 
 // ページがロードされたときに、最初にすべてのユーザーを取得して表示する
