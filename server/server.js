@@ -50,8 +50,7 @@ app.get('/users/search', (req, res) => {
   const query = req.query.query;
 if (!query) {
     return res.status(400).send({ error: '検索条件が必要です' });
-}
-})
+  };
 
 const sql = `SELECT * FROM users WHERE name LIKE ? OR email LIKE ?`;
 const values = [`%${query}%`, `%${query}%`];
@@ -59,6 +58,7 @@ db.query(sql, values, (err, results) => {
   if (err) return res.status(500).send(err);
   res.json(results);
 });
+})
 
 // サーバーを指定したポートで起動する
 // `app.listen` は、指定されたポートでサーバーを開始し、クライアントからのリクエストを待ち受ける
