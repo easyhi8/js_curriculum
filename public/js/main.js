@@ -3,8 +3,6 @@
 // フォームの送信イベントにリスナーを追加し、addUser 関数を実行する
 document.getElementById('userForm').addEventListener('submit', addUser);
 
-document.getElementById('searchInput').addEventListener('searchButton', ferchSearchUser);
-
 // ユーザーを追加するための関数
 function addUser(e) {
     // フォームのデフォルトの送信動作を防止する
@@ -67,6 +65,7 @@ function deleteUser(id) {
         .catch(error => console.error('Error:', error));  // エラーが発生した場合、エラーメッセージをコンソールに出力
 }
 
+document.getElementById('searchButton').onclick = fetchSearchUser;
 async function fetchSearchUser() {
   try {
     const response = await fetch(`/users/search?query=${encodeURIComponent(query)}`);
