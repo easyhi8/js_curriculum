@@ -45,8 +45,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/users/search', (req, res) => {
-  const name = req.query.name;
-  res.send(`Hello, ${name}!`);
+  const query = req.query.query;
+if (!query) {
+    return res.status(400).send({ error: '検索条件が必要です' });
+}
 })
 
 // サーバーを指定したポートで起動する
