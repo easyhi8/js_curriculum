@@ -42,7 +42,19 @@ const User = {
             return callback(null, null);
         });
     },
+    
+    findByName: (name, callback) => {
+        const query = `SELECT * FROM users WHERE name = ?`;
 
+        db.query(query, [name], (err, results) => {
+            if (err) return callback(err, null);
+
+            if (results.length > 0) return callback(null, results[0]);
+
+            return callback(null, null);
+        });
+  },
+    
     // すべてのユーザーを取得するメソッド
     // `callback` 関数には、エラー (`err`) と全ユーザーのリスト (`users`) が渡される
     findAll: (callback) => {

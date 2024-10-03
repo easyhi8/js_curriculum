@@ -8,7 +8,7 @@ require('dotenv').config();
 // Express は、Node.js のためのシンプルで強力なウェブアプリケーションフレームワーク
 const express = require('express');
 
-const db = require('./config/db');
+const db = require('../config/db');
 
 // `cors` パッケージをインポート
 // CORS（Cross-Origin Resource Sharing）を有効にし、異なるオリジン間のリクエストを許可する

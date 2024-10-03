@@ -83,6 +83,16 @@ exports.deleteUser = (req, res) => {
     });
 };
 
+exports.searchUser = (req, res) => {
+    const { name, email } = req.params;
+
+    User.findById(name email, (err, result) => {
+        if (err) return res.status(500).json({ error: err });
+
+        res.status(200).json({ message: 'User search successfully!' });
+    });
+};
+
 // ユーザーのログイン処理を行う関数
 exports.loginUser = (req, res) => {
     // リクエストボディからメールアドレスとパスワードを取得
