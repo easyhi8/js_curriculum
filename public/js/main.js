@@ -73,9 +73,11 @@ async function fetchSearchUser() {
     const data = await response.json();
     console.log("検索結果:", data);
 
-    document.getElementById("resultList").textContent = JSON.stringify(data);
+    document.getElementById("resultList").textContent = "<li>" + JSON.stringify(data) + "</li>";
   } catch (error) {
-    console.error("エラーが発生しました:", error);
+    console.error("該当するユーザーが見つかりませんでした:", error);
+
+    document.getElementById("resultList").textContent = "該当するユーザーが見つかりませんでした";
   }
 }
 
