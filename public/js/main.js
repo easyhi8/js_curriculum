@@ -65,9 +65,10 @@ function deleteUser(id) {
         .catch(error => console.error('Error:', error));  // エラーが発生した場合、エラーメッセージをコンソールに出力
 }
 
-document.getElementById('searchButton').onclick = fetchSearchUser;
-async function fetchSearchUser() {
+document.getElementById('searchButton').onclick = searchUser;
+async function searchUser() {
   try {
+    document.getElementById('searchInput');
     const response = await fetch(`http://localhost:3000/api/users/search?query=${encodeURIComponent(query)}`);
     const data = await response.json();
     console.log("検索結果:", data);

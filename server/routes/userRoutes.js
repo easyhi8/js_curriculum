@@ -21,7 +21,7 @@ router.put('/users/:id', userController.updateUser);
 // 指定されたIDのユーザーを削除するためのルートを設定する (DELETEリクエスト)
 router.delete('/users/:id', userController.deleteUser);
 
-router.search('/users/search?query', userController.deleteUser);
+router.search('/users/search?query', userController.searchUser);
 
 // ログイン機能のルートを設定する (POSTリクエスト)
 router.post('/login', userController.loginUser);
