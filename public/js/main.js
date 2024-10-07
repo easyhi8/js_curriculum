@@ -69,17 +69,27 @@ document.getElementById('searchButton').onclick = searchUser;
 async function searchUser() {
   const query = document.getElementById('searchInput').value;
   try {
+    
     const response = await fetch(`http://localhost:3000/api/users/search?query=${encodeURIComponent(query)}`);
     const data = await response.json();
+    console.log(data.length);
     console.log("検索結果:", data);
 
-    data.forEach(user => {
-      const li = document.createElement('li');
-      li.innerHTML = `
-          ${user.name} (${user.email})
-      `;
-      resultList.appendChild(li);
-    });
+    if (data.length == 0) {
+      console.error("該当するユーザーが見つかりませんでした:", error);
+      document.getElementById("resultList").textContent = "該当するユーザーが見つかりませんでした";
+    } else {
+      while (resultList.firstChild) {
+        resultList.removeChild(resultList.firstChild);
+      };
+      data.forEach(user => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            ${user.name} (${user.email})
+        `;
+        resultList.appendChild(li);
+      });
+    };
   } catch (error) {
     console.error("該当するユーザーが見つかりませんでした:", error);
 

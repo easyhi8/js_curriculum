@@ -48,7 +48,7 @@ const User = {
       const values = [`%${query}%`, `%${query}%`];
 
       db.query(sql, values, callback);
-  },
+    },
     
     // すべてのユーザーを取得するメソッド
     // `callback` 関数には、エラー (`err`) と全ユーザーのリスト (`users`) が渡される
