@@ -67,8 +67,8 @@ function deleteUser(id) {
 
 document.getElementById('searchButton').onclick = searchUser;
 async function searchUser() {
+  const query = document.getElementById('searchInput').value;
   try {
-    document.getElementById('searchInput');
     const response = await fetch(`http://localhost:3000/api/users/search?query=${encodeURIComponent(query)}`);
     const data = await response.json();
     console.log("検索結果:", data);

@@ -43,16 +43,11 @@ const User = {
         });
     },
     
-    findByName: (name, callback) => {
-        const query = `SELECT * FROM users WHERE name = ?`;
+    findBySearchUser: (query, callback) => {
+      const sql = `SELECT * FROM users WHERE name LIKE ? OR email LIKE ?`;
+      const values = [`%${query}%`, `%${query}%`];
 
-        db.query(query, [name], (err, results) => {
-            if (err) return callback(err, null);
-
-            if (results.length > 0) return callback(null, results[0]);
-
-            return callback(null, null);
-        });
+      db.query(sql, values, callback);
   },
     
     // すべてのユーザーを取得するメソッド
