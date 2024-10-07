@@ -89,7 +89,7 @@ exports.searchUser = (req, res) => {
       return res.status(400).send({ error: '検索条件が必要です' });
     };
 
-  User.findBySearchUser(sql, values, (err, results) => {
+  User.findBySearchUser(query, (err, results) => {
     if (err) return res.status(500).send(err);
     res.json(results);
   });

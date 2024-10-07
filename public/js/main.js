@@ -73,7 +73,13 @@ async function searchUser() {
     const data = await response.json();
     console.log("検索結果:", data);
 
-    document.getElementById("resultList").textContent = "<li>" + JSON.stringify(data) + "</li>";
+    data.forEach(user => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+          ${user.name} (${user.email})
+      `;
+      resultList.appendChild(li);
+    });
   } catch (error) {
     console.error("該当するユーザーが見つかりませんでした:", error);
 
