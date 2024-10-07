@@ -83,6 +83,18 @@ exports.deleteUser = (req, res) => {
     });
 };
 
+exports.searchUser = (req, res) => {
+  const query = req.query.query;
+  if (!query) {
+      return res.status(400).send({ error: '検索条件が必要です' });
+    };
+
+  User.findBySearchUser(query, (err, results) => {
+    if (err) return res.status(500).send(err);
+    res.json(results);
+  });
+};
+
 // ユーザーのログイン処理を行う関数
 exports.loginUser = (req, res) => {
     // リクエストボディからメールアドレスとパスワードを取得

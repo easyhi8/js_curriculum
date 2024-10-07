@@ -42,7 +42,14 @@ const User = {
             return callback(null, null);
         });
     },
+    
+    findBySearchUser: (query, callback) => {
+      const sql = `SELECT * FROM users WHERE name LIKE ? OR email LIKE ?`;
+      const values = [`%${query}%`, `%${query}%`];
 
+      db.query(sql, values, callback);
+    },
+    
     // すべてのユーザーを取得するメソッド
     // `callback` 関数には、エラー (`err`) と全ユーザーのリスト (`users`) が渡される
     findAll: (callback) => {
